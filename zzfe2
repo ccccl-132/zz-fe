@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+const printTree = (root) => {
+  const result = [];
+  let nowRoot = [root];
+  while (nowRoot.length) {
+    const nextRoot = [];
+    const nowResult = [];
+    for (let i = 0; i < nowRoot.length; i++) {
+      nowResult.push(nowRoot[i].val);
+      if (nowRoot[i].left) {
+        nextRoot.push(nowRoot[i].left);
+      }
+
+      if (nowRoot[i].right) {
+        nextRoot.push(nowRoot[i].right);
+      }
+    }
+    nowRoot = nextRoot;
+    result.push(nowResult);
+  }
+
+
+  return result;
+};
+
+const root = {
+  val: 'A',
+  left: { val: 'B',
+     left:{
+val:'C',left: null, right: null},
+  right:{
+    val:'E',
+    left:{val: 'H', left: null, right: null },
+    right: { val: 'I', left: null, right: null },
+
+  }
+  },
+  right: {
+    val: 'D',
+    left: { val: 'F', left: null, right: null },
+    right: { val: 'G', left: {val: 'H', left: null, right: null}, right:{val: 'I', left: null, right: null
+      
+    } },
+  },
+};
+
+console.log(printTree(root));
+
+ 
+
+
+    </script>
+</body>
+</html>
